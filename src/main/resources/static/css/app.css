@@ -1,0 +1,55 @@
+:root{
+  --glass: rgba(255,255,255,0.12);
+  --glass2: rgba(255,255,255,0.18);
+  --border: rgba(255,255,255,0.22);
+}
+
+body{
+  min-height: 100vh;
+  background: #0b1020;
+  color: #fff;
+}
+
+.bg-gradient{
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(900px 500px at 10% 10%, rgba(90, 140, 255, 0.40), transparent 60%),
+    radial-gradient(700px 450px at 90% 30%, rgba(120, 255, 214, 0.25), transparent 60%),
+    radial-gradient(700px 450px at 50% 100%, rgba(255, 90, 190, 0.22), transparent 60%);
+  filter: blur(0px);
+  z-index: -1;
+}
+
+.glass-nav{
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.glass-card{
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  backdrop-filter: blur(14px);
+}
+
+.preview-frame{
+  width: 100%;
+  height: 520px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 14px;
+  background: rgba(0,0,0,0.15);
+}
+
+.preview-text{
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 14px;
+  padding: 14px;
+  max-height: 520px;
+  overflow: auto;
+  color: rgba(255,255,255,0.92);
+}
