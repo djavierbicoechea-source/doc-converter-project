@@ -8,52 +8,80 @@
   <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
-<div class="bg-gradient"></div>
+<div class="page-shell">
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
 
-<nav class="navbar navbar-expand-lg navbar-dark glass-nav">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="/">Doc Converter</a>
-    
-  </div>
-</nav>
+  <nav class="navbar navbar-expand-lg app-navbar">
+    <div class="container">
+      <a class="navbar-brand brand-lockup" href="/" aria-label="Accueil Doc Converter">
+        <span class="brand-mark">DC</span>
+        <span>
+          <span class="brand-title">Doc Converter</span>
+          <small class="brand-subtitle">Conversion rapide & propre</small>
+        </span>
+      </a>
+    </div>
+  </nav>
 
-<main class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-lg-8">
-      <div class="glass-card p-4 p-md-5 shadow-lg">
-        <h1 class="display-6 fw-bold mb-2">Convertissez tes documents</h1>
-        <p class="text-secondary mb-4">PDF ↔ Word • PDF → Excel • Preview • Download • Share</p>
+  <main class="container main-area">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <section class="hero-copy">
+          <span class="eyebrow">PDF • Word • Excel</span>
+          <h1>Transformez vos documents avec une interface plus claire.</h1>
+          <p>
+            Importez un fichier, choisissez une conversion, puis récupérez le résultat avec aperçu et partage.
+          </p>
+          <div class="feature-grid">
+            <div class="feature-pill">PDF vers DOCX</div>
+            <div class="feature-pill">DOCX vers PDF</div>
+            <div class="feature-pill">PDF vers XLSX</div>
+          </div>
+        </section>
+      </div>
 
-        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
-
-        <form method="post" action="/convert" enctype="multipart/form-data" class="vstack gap-3">
-          <div>
-            <label class="form-label fw-semibold">Fichier</label>
-            <input class="form-control form-control-lg" type="file" name="file" required>
-            <div class="form-text">Formats supportés: PDF ou DOCX selon la conversion choisie.</div>
+      <div class="col-lg-6">
+        <section class="converter-panel shadow-lg">
+          <div class="panel-header">
+            <div>
+              <span class="step-badge">01</span>
+              <h2>Nouvelle conversion</h2>
+            </div>
+            <span class="status-dot">En ligne</span>
           </div>
 
-          <div>
-            <label class="form-label fw-semibold">Conversion</label>
-            <select class="form-select form-select-lg" name="type" required>
-              <option th:each="t : ${types}" th:value="${t}" th:text="${t}"></option>
-            </select>
-          </div>
+          <div th:if="${error}" class="alert alert-danger app-alert" th:text="${error}"></div>
 
-          <button class="btn btn-primary btn-lg w-100 fw-semibold">
-            Convertir maintenant
-          </button>
-        </form>
+          <form method="post" action="/convert" enctype="multipart/form-data" class="vstack gap-4">
+            <div>
+              <label class="form-label app-label">Fichier à convertir</label>
+              <div class="upload-box">
+                <input id="fileInput" class="form-control form-control-lg" type="file" name="file" required>
+                <div class="upload-help">
+                  <strong>Choisissez votre fichier</strong>
+                  <span>Formats supportés : PDF ou DOCX selon la conversion.</span>
+                </div>
+              </div>
+            </div>
 
-        <hr class="my-4">
+            <div>
+              <label class="form-label app-label">Type de conversion</label>
+              <select class="form-select form-select-lg app-select" name="type" required>
+                <option th:each="t : ${types}" th:value="${t}" th:text="${t}"></option>
+              </select>
+            </div>
 
-        <div class="small text-secondary">
-          
-        </div>
+            <button class="btn app-primary-btn btn-lg w-100" type="submit">
+              Convertir maintenant
+              <span aria-hidden="true">→</span>
+            </button>
+          </form>
+        </section>
       </div>
     </div>
-  </div>
-</main>
+  </main>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
